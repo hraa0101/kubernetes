@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  creationTimestamp: "2020-04-23T13:42:11Z"
+  generation: 1
+  name: prom-ingresses
+  namespace: monitoring
+  resourceVersion: "9525872"
+  selfLink: /apis/extensions/v1beta1/namespaces/monitoring/ingresses/prom-ingresses
+  uid: 1ed9143c-7c03-4b8b-b926-00e31024a436
+spec:
+  rules:
+  - host: alert.test.com
+    http:
+      paths:
+      - backend:
+          serviceName: alertmanager-main
+          servicePort: 9093
+        path: /
+  - host: grafana.test.com
+    http:
+      paths:
+      - backend:
+          serviceName: grafana
+          servicePort: 3000
+        path: /
+  - host: prom.test.com
+    http:
+      paths:
+      - backend:
+          serviceName: prometheus-k8s
+          servicePort: 9090
+        path: /

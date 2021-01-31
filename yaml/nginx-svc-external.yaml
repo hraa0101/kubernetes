@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx-svc-external
+  name: nginx-svc-external
+spec:
+  ports:
+  - name: http # Service端口的名称
+    port: 80 # Service自己的端口, servicea --> serviceb http://serviceb,  http://serviceb:8080 
+    protocol: TCP # UDP TCP SCTP default: TCP
+    targetPort: 80 # 后端应用的端口
+  sessionAffinity: None
+  type: ClusterIP
